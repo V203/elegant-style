@@ -1,60 +1,10 @@
 "use client"
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
-export async function getServerSideProps(context:any) {
-    let res = await fetch(`http://localhost:3000/api/shopitems/?q=${context.params.query}`);
-    let data = res.json();
-
-    return {
-        props: {
-            data
-        }
-    }
-}
-
 
 
 let ItemModalDisplay = (props: any) => {
 
-    let [itemData, setItemData] = useState(null);
-    let { item: { _id } } = props
-    console.log(props.item.id)
-
-    useEffect(() => {
-
-        async function getItem() {
-            try {
-
-
-
-                console.log(_id)
-                const res = await fetch(`http://localhost:3000/api/shopitems/${props.item.id}`);
-                let item = await res.json();
-                console.log(item)
-                setItemData(prev => prev)
-
-            } catch (error) {
-                console.error('Error fetching item data: ', error);
-
-
-            }
-        }
-
-
-
-        // if (props.display) {
-
-        // }
-        getItem();
-
-
-
-    }, [])
-
-
-    console.log(itemData);
 
 
     return (
@@ -94,7 +44,7 @@ let ItemModalDisplay = (props: any) => {
                         <span>
 
                             <p className="m-0">
-                                 {itemData.itemName} 
+                                {props.item.itemName}
                             </p>
                             <p className="text-secondary-color text-[12px] text-end">
                                 By Jimmy choo

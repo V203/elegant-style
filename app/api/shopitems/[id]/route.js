@@ -10,16 +10,13 @@ export async function DELETE(request) {
 
 }
 
-export async function GET(request,{params}) {
-    console.log()
-    try {
-        const id = request.nextUrl.searchParams.get("id");
-        await connectdb();
-        let item = await ShopItems.findById({id});
-        
-        return NextResponse.json({ item }, { status: 200 })
-    } catch (error) {
-        console.log(error)
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-    }
+export async function GET(request, { params }) {
+
+    const { id } = params;
+    console.log(id)
+
+    await connectdb()
+    const shopItem = await ShopItems.findOne({ _id: id });
+    return NextResponse.json({ shopItem }, { status: 200 });
+
 }
