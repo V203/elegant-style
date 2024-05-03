@@ -1,14 +1,15 @@
 "use client"
 
+import { Iitems } from "@/app/interfaces/Iitems";
 import Image from "next/image";
 
 
-let ItemModalDisplay = (props: any) => {
+let ItemModalDisplay = ({selectedItem,display} :{ selectedItem:Iitems, display:boolean}) => {
 
 
 
     return (
-        <div className={`fixed top-0 left-0 w-full h-full ${props.display ? "flex" : "hidden"} items-center justify-center bg-black bg-opacity-5 z-50 `} >
+        <div className={`fixed top-0 left-0 w-full h-full ${display ? "flex" : "hidden"} items-center justify-center bg-black bg-opacity-5 z-50 `} >
             <div className={`flex flex-col place-self-center w-[500px] rounded-xl animate-translate delay-75  duration-100 ease-linear`}>
                 <div className="flex h-12 min-w-max place-content-center place-items-center rounded-t-xl bg-primary-color text-white">
                     <p className="font-bold text-4xl">
@@ -21,10 +22,10 @@ let ItemModalDisplay = (props: any) => {
 
                     <div className="relative bg-white rounded-b-xl">
 
-                        <Image className="hover:cursor-pointer rounded-bl-lg" src={"/" + `${props.item.itemName}` + ".png"} height={400} width={320} alt={`item image`} />
+                        <Image className="hover:cursor-pointer rounded-bl-lg" src={"/" + `${selectedItem.itemName}` + ".png"} height={400} width={320} alt={`item image`} />
 
                         <div className="bg-label-color absolute float-right bottom-0 right-0   w-20 h-auto text-white  justify-center items-center flex">
-                            ${props.item.price}
+                            ${selectedItem.price.toFixed(2)}
                         </div>
 
 
@@ -44,7 +45,7 @@ let ItemModalDisplay = (props: any) => {
                         <span>
 
                             <p className="m-0">
-                                {props.item.itemName}
+                                {selectedItem.itemName}
                             </p>
                             <p className="text-secondary-color text-[12px] text-end">
                                 By Jimmy choo
@@ -67,4 +68,3 @@ let ItemModalDisplay = (props: any) => {
 
 export default ItemModalDisplay
 
-// props.display

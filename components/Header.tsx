@@ -13,7 +13,7 @@ const Header = () => {
     const handleClick =() => router.push("/signin")
 
     
-    return (<div className="flex flex-row justify-between h-14 items-center border-solid border-primary-color border-b-2 mb-6 *: px-12">
+    return (<div className="flex flex-row fixed top-0 z-40 w-full bg-white mb-6 justify-between h-14 items-center border-solid border-primary-color border-b-2  px-12">
         <span className={` ${quintessential.className} text-primary-color text-3xl `}>
             Élégance Éclatante
         </span>

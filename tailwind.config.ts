@@ -13,6 +13,8 @@ const config: Config = {
         translate: 'translate 0.5s ease-out',
         
 
+      }, screens: {
+        'xs': '480px', 
       },
       
       keyframes: {
