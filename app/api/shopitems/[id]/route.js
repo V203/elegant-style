@@ -12,7 +12,7 @@ export async function generateStaticParams() {
         let { shopItems } = await response.json();
         // Generate static params for each ID
         return shopItems.map((el) => (
-           {params: { id: el._id }}
+            { params: { id: el._id } }
         )
         );
     } catch (error) {
@@ -21,9 +21,6 @@ export async function generateStaticParams() {
 
 
 }
-
-// Your other API route logic
-
 
 export async function DELETE(request) {
     const id = request.nextUrl.searchParams.get("id");
