@@ -1,9 +1,7 @@
-import { storeItems as items } from "../db";
-import Image from "next/image";
+// import Image from "next/image";
 import SearchPillField from "../../components/SearchPillField"
 import Filter from "@/components/Filter";
-import Link from "next/link";
-import { category } from "../db";
+// import Link from "next/link";
 import Card from "@/components/Cards";
 
 const Shop = () => {

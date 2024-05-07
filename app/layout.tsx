@@ -6,7 +6,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { nunito } from "@/components/fonts";
 import { ItemContext } from "@/context/ItemContext";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -25,7 +25,7 @@ export default function RootLayout({
   
 
 
-  const handleSearchItem = (event) => {
+  const handleSearchItem = (event:ChangeEvent<HTMLInputElement>) => {
     
     setSearchItem(event.target.value);
   };

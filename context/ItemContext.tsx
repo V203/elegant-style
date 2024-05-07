@@ -2,19 +2,12 @@
 
 import {createContext, Dispatch, SetStateAction } from "react";
 
-
-   
-    
-
-
-
-type contextType = {
+interface searchContextProps {
     searchItem : string,
     setSearchItem: Dispatch<SetStateAction<string>>
-
-    
+   
 }
 
 
- export const ItemContext = createContext<contextType | undefined>(undefined);
+ export const ItemContext = createContext<searchContextProps |  Dispatch<SetStateAction<string>> | string | any>("");
  
