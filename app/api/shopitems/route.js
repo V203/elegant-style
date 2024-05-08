@@ -4,21 +4,9 @@ import ShopItems from "../../../models/shopItems";
 import { NextResponse } from "next/server";
 
 
-export async function generateStaticParams() {
-   try {
-    let { shopItems } = await fetch("http://localhost:3000/api/shopitems").then((res) => res.json());
-    return shopItems.map((item) => ({
-        params: {
-            id: item._id, // Make sure to use "id" here instead of "_id"
-        }
-    }));
-   } catch (error) {
-    console.log(error);
-   }
-}
 
 
-export async function GET({params}) {
+export async function GET() {
     try {
         await connectdb();
         const shopItems  = await ShopItems.find({}) ;
@@ -29,7 +17,7 @@ export async function GET({params}) {
  
 }
 
-export async function POST(request,{params}) {
+export async function POST(request) {
     try {
         const { itemName, price, category } = await request.json();
         await connectdb();
@@ -42,7 +30,7 @@ export async function POST(request,{params}) {
 
 }
 
-export async function DELETE(request,{params}){
+export async function DELETE(request){
     const id = request.nextUrl.searchParams.get("id");
     await connectdb();
     await ShopItems.findByIdAndDelete(id)
@@ -50,7 +38,7 @@ export async function DELETE(request,{params}){
 
 }
 
-export async function PUT(request,{params}){
+export async function PUT(request){
    try {
     const id = request.nextUrl.searchParams.get("id");
     await connectdb();
