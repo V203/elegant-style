@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 
-export async function GET() {
+export async function GET({params}) {
     try {
         await connectdb();
         const shopItems  = await ShopItems.find({}) ;
@@ -29,7 +29,7 @@ export async function GET() {
  
 }
 
-export async function POST(request) {
+export async function POST(request,{params}) {
     try {
         const { itemName, price, category } = await request.json();
         await connectdb();
@@ -42,7 +42,7 @@ export async function POST(request) {
 
 }
 
-export async function DELETE(request){
+export async function DELETE(request,{params}){
     const id = request.nextUrl.searchParams.get("id");
     await connectdb();
     await ShopItems.findByIdAndDelete(id)
@@ -50,7 +50,7 @@ export async function DELETE(request){
 
 }
 
-export async function PUT(request){
+export async function PUT(request,{params}){
    try {
     const id = request.nextUrl.searchParams.get("id");
     await connectdb();
