@@ -1,31 +1,32 @@
-# .github/workflows/main.yml
-name: Build and Deploy
+name: Next.js Build and Deploy
 
 on:
   push:
     branches:
-      - main
+      - main  # Change this to your main branch name
+  # You can also trigger this workflow manually or on a schedule if needed
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
+      
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
-
-      - name: Install dependencies
+          node-version: 14  # Change this to match your Node.js version
+      
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build
+      - name: Build Next.js App
         run: npm run build
 
-      - name: Deploy
-        run: npm run deploy
-        env:
-          MONGODB_URI: ${{env.MONGODB_URI }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out  # Change this to the directory where your Next.js app is built
