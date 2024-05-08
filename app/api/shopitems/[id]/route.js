@@ -23,11 +23,12 @@ export async function DELETE(request) {
 
 export async function GET( request,{params} ) {
     // console.log(params + " This is it");
-    const id = params
+    const {id} = params
     console.log(id)
 
     await connectdb()
-    // const shopItem = await ShopItems.findOne({ _id: params._id });
-    return NextResponse.json({  }, { status: 200 });
+    const shopItem = await ShopItems.findOne({ _id: id });
+    console.log(shopItem);
+    return NextResponse.json({ shopItem }, { status: 200 });
     // shopItem
 }
