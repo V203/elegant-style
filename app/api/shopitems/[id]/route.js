@@ -2,41 +2,32 @@ import { connectdb } from "../../../../libs/mongodb";
 import { NextResponse } from "next/server";
 import ShopItems from "../../../../models/shopItems"
 
-
-// pages/api/shopitems/[id].ts
-
 export async function generateStaticParams() {
-    try {
-        const response = await fetch("http://localhost:3000/api/shopitems", { cache: "no-store" });
-
-        let { shopItems } = await response.json();
-        // Generate static params for each ID
-        return shopItems.map((el) => (
-            { params: { id: el._id } }
-        )
-        );
-    } catch (error) {
-        console.log(error)
-    }
-
-
+    let { shopItems } = await fetch("http://localhost:3000/api/shopitems").then((res) => res.json());
+    return shopItems.map((item) => ({
+        params: {
+            id: item._id, // Make sure to use "id" here instead of "_id"
+        }
+    }));
 }
+
 
 export async function DELETE(request) {
     const id = request.nextUrl.searchParams.get("id");
+
     await connectdb();
     await ShopItems.findByIdAndDelete(id)
     return NextResponse.json({ message: "deleted successfully" }, { status: 201 })
 
 }
 
-export async function GET(request, { params }) {
-    console.log(params);
-    const { id } = params;
+export async function GET( request,{params} ) {
+    // console.log(params + " This is it");
+    const id = params
     console.log(id)
 
     await connectdb()
-    const shopItem = await ShopItems.findOne({ _id: id });
-    return NextResponse.json({ shopItem }, { status: 200 });
-
+    // const shopItem = await ShopItems.findOne({ _id: params._id });
+    return NextResponse.json({  }, { status: 200 });
+    // shopItem
 }
