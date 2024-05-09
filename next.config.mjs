@@ -2,7 +2,8 @@
 const nextConfig = {
     output: "export",
     images: {unoptimized:true},
-    distDir:"dist"
+    distDir:"dist",
+    basePath:"/elegant-style"
 
 };
 
