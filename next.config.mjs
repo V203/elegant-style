@@ -1,11 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "standalone",
-    images: { unoptimized: true, loader:"akamai",path:""    },
-    basePath:"",
-    distDir: "dist"
-    
-    
+    output: "export",
+    images: {unoptimized:true},
 
 };
 

@@ -3,7 +3,22 @@ import { NextResponse } from "next/server";
 import ShopItems from "../../../../models/shopItems"
 
 
+export async function generateStaticParams(){
+  
 
+       try{
+            let {shopItems} = await fetch("http://localhost:3000/api/shopitems").then((res) => res.json());
+            return shopItems.map((el) => ({id:el._id})) ;
+            
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+    
+    
+}
 
 export async function DELETE(request) {
     try {
