@@ -33,7 +33,7 @@ let handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     useEffect(() => {
         const getItems = async (): Promise<void> => {
             try {
-                const response = await fetch("http://localhost:3000/api/shopitems", { cache: "no-store" });
+                const response = await fetch("/api/shopitems", { cache: "no-store" });
 
                 if (!response.ok) {
                     throw new Error("Error retrieving items from the database");
