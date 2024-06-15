@@ -1,7 +1,8 @@
 "use client"
-import {  type FC } from 'react';
+import { type FC } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useSession, signIn } from 'next-auth/react';
 
 
 
@@ -10,9 +11,10 @@ interface LandingBodyProps { }
 
 const LandingBody: FC<LandingBodyProps> = ({ }) => {
 
+
     let router = useRouter();
 
-  
+
 
 
     return (
@@ -24,8 +26,6 @@ const LandingBody: FC<LandingBodyProps> = ({ }) => {
                     <p className="text-secondary-color text-5xl">
                         Unleashing Your <br />
                         <span className="text-primary-color "> Fashion</span> sense...
-
-
                     </p>
 
                 </div>
@@ -34,6 +34,7 @@ const LandingBody: FC<LandingBodyProps> = ({ }) => {
                     Embark on a journey of sartorial splendor as you navigate through our exclusive designer collaborations and insider interviews. Let us be your guide as you elevate your wardrobe to new heights of chic sophistication.
 
                 </span>
+             
 
                 <div className=' flex gap-2 justify-start'>
                     <button onClick={() => router.push("/shop")} className='w-48 h-12 bg-primary-color text-white'><span className='flex gap-1 justify-center'> Shop Now  <Image src={"/arrow.svg"} width={36} height={24} alt="Arrow image pointing to the right" /></span> </button>

@@ -24,7 +24,8 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "auth":["./auth.ts"]
     }
   },
   "include": [
@@ -34,7 +35,7 @@
     ".next/types/**/*.ts",
     "app/category/pages.jsx",
     "dist/types/**/*.ts"
-  ],
+, "models/user.ts"  ],
   "exclude": [
     "node_modules"
   ]

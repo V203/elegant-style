@@ -1,20 +1,17 @@
 
-import { connectdb } from "../../../libs/mongodb";
+import { connectdb } from "../../../lib/mongodb";
 import ShopItems from "../../../models/shopItems";
 import { NextResponse } from "next/server";
-
-
-
 
 export async function GET() {
     try {
         await connectdb();
         const shopItems  = await ShopItems.find({}) ;
+      
         return NextResponse.json({shopItems});
     } catch (error) {
         console.log(error)
     }
- 
 }
 
 export async function POST(request) {
@@ -31,10 +28,16 @@ export async function POST(request) {
 }
 
 export async function DELETE(request){
-    const id = request.nextUrl.searchParams.get("id");
-    await connectdb();
-    await ShopItems.findByIdAndDelete(id)
-    return NextResponse.json({message: "deleted successfully"},{status: 201})
+    try{
+
+        const id = request.nextUrl.searchParams.get("id");
+        await connectdb();
+        await ShopItems.findByIdAndDelete(id)
+        return NextResponse.json({message: "deleted successfully"},{status: 201})
+    }catch(error){
+        console.log(error);
+
+    }
 
 }
 

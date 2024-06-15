@@ -1,7 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 
-
-
 const ShopItemsShcema = new Schema(
     {
         itemName: {

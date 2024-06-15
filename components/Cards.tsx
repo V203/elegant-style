@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Iitems } from "@/app/interfaces/Iitems";
 import React from "react"
@@ -21,18 +22,19 @@ let handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
 }
 
     let [animate, setAnimate] = useState(true);
-
-
     let [items, setItems] = useState<Iitems[]>([]);
     let [display, setDisplay] = useState(false);
     let [selectedItem, setSelectedItem] = useState<Iitems | null>(null);
 
+
     
     
-    console.log(searchItem)
+  
     useEffect(() => {
         const getItems = async (): Promise<void> => {
             try {
+
+             
                 const response = await fetch("/api/shopitems", { cache: "no-store" });
 
                 if (!response.ok) {

@@ -1,4 +1,4 @@
-import { connectdb } from "../../../../libs/mongodb";
+import { connectdb } from "../../../../lib/mongodb";
 import { NextResponse } from "next/server";
 import ShopItems from "../../../../models/shopItems"
 
@@ -42,7 +42,7 @@ export async function GET( NextResponse,{ params }) {
 
         await connectdb()
         const shopItem = await ShopItems.findOne({ _id: id });
-        console.log(shopItem);
+      
         return NextResponse.json({ shopItem }, { status: 200 });
 
     } catch (error) {

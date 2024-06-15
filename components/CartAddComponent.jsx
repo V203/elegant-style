@@ -1,15 +1,30 @@
 
-import { storeItems } from "../app/db"
+"use client"
 import { Nunito } from "next/font/google";
 import Image from "next/image";
+import { getUserCart } from "@/lib/actions/actions";
+import { useEffect, useState } from "react";
 
 
 let CartAddComponent = (props) => {
 
+    let [itemsInCart,setItemsInCart] = useState([]);
+
+    useEffect(
+        () => {
+            let fetchItemsInCart = async () => {
+                let currentCartItems = await getUserCart();
+                setItemsInCart(currentCartItems)
+                // console.log(currentCartItems);
+            }
+
+            fetchItemsInCart()
+        },[]
+    )
 
 
 
-    const itemsInCart = storeItems.slice(0, 3);
+    // const itemsInCart = storeItems.slice(0, 3);
 
     return (
 
@@ -36,7 +51,7 @@ let CartAddComponent = (props) => {
                     </div>
                     <span className="flex flex-col justify-center items-start text-lg">
 
-                        <p>{el.itemName}</p>
+                        <p>{el._id}</p>
                         <p className="text-sm text-secondary-color font-thin">
                             By Jimmy Woo
                         </p>

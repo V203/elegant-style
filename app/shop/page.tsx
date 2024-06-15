@@ -2,30 +2,31 @@
 import SearchPillField from "../../components/SearchPillField"
 import Filter from "@/components/Filter";
 // import Link from "next/link";
-import Card from "@/components/Cards";
+import Cards from "@/components/Cards"; "@/components/Cards";
+import { getItems } from "@/lib/mongodb";
 
-const Shop = () => {
 
+const Shop = async  () => {
     
+    let {shopItems} = await getItems()
 
     return (<>
-    <div className="flex flex-row items-center justify-end mt-12 gap-x-12 px-12">
+        <div className="flex flex-row items-center justify-end mt-12 gap-x-12 px-12">
+           
+            <SearchPillField />
+            <Filter />
 
-        <SearchPillField />
-        <Filter />
-    
-    </div>
-    
-        <Card />
-        
+        </div>
+
+        <Cards items={shopItems} />
 
 
-          
 
-        
+
+
+
     </>
-        
+
     )
 }
 export default Shop
-            

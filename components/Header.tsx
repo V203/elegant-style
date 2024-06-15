@@ -1,18 +1,25 @@
-"use client"
+// "use client"
 import Image from "next/image";
 import Link from "next/link";
 import { quintessential } from "./fonts";
+import { getAuthSession } from "../lib/actions/actions"
+import { usePathname, useRouter } from 'next/navigation';
+import { auth, signIn } from "auth";
+import { getUserCart } from "../lib/actions/actions";
+import OurUI from "./OurUI";
+import { useEffect, useState } from "react";
+import CartComponent from "./CartComponent";
 
-import { usePathname,useRouter } from 'next/navigation';
 
-const Header = () => {
+
+let Header = () => {
+
+
+ 
+
     const path = usePathname();
-    let router  = useRouter();
 
 
-    const handleClick =() => router.push("/signin")
-
-    
     return (<div className="flex flex-row z-40 w-full bg-white mb-6 justify-between h-14 items-center border-solid border-primary-color border-b-2  px-12">
         <span className={` ${quintessential.className} text-primary-color text-3xl `}>
             Élégance Éclatante
@@ -50,14 +57,17 @@ const Header = () => {
 
         </div>
 
-        <div className="flex flex-row gap-2">
-            <Image alt="Shopping bag image" src={"/cartImg.svg"} width={18} height={18} />
-            <button onClick={handleClick} className="text-primary-color flex justify-between p-2 flex-row items-center border-solid border-2 border-primary-color rounded-3xl h-8 w-24">
-                <p>
-                    Sign In
-                </p>
-                <Image alt="Shopping bag image" src={"/loginIcon.svg"} width={18} height={18} />
-            </button>
+        <span className="relative">
+
+
+            <Image src="/cartImg.svg" alt="" width={25} height={25} />
+
+            <CartComponent  />
+
+        </span>
+
+        <div className="flex gap-3">
+            <OurUI />
         </div>
 
     </div>)
