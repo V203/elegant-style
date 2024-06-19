@@ -1,6 +1,6 @@
 import { connectdb } from "../../../../lib/mongodb";
 import { NextResponse } from "next/server";
-import ShopItems from "../../../../models/shopItems"
+import {ShopItems} from "../../../../models/user"
 
 
 // export async function generateStaticParams(){
