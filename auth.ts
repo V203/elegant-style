@@ -38,7 +38,7 @@ const config = {
                 
                 // if (!userExist) {
                     if (account?.provider === "google") {
-                        let res = await fetch("http://localhost:3000/api/user", {
+                        let res = await fetch("/api/user", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
