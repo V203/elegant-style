@@ -3,13 +3,11 @@ import SearchPillField from "../../components/SearchPillField"
 import Filter from "@/components/Filter";
 // import Link from "next/link";
 import Cards from "@/components/Cards"; "@/components/Cards";
-import { getItems } from "@/lib/actions/actions";
-import { DataBrew } from "aws-sdk";
 
 
 const Shop = async () => {
 
-    let {shopItems}:{shopItems:any} = await getItems();
+  
 
   
 
@@ -21,13 +19,7 @@ const Shop = async () => {
 
         </div>
 
-        <Cards items={shopItems} />
-
-
-
-
-
-
+        <Cards  />
     </>
 
     )
