@@ -60,7 +60,6 @@ let getUserCart = async () => {
             let { user: { email } } = session
 
             let { products } = await User.findOne({ email: email });
-console.log(products);
 
             return products
         } else {

@@ -1,0 +1,12 @@
+MONGODB_URI=mongodb+srv://v203:pqpq203ElegantStyle@jeanso-cluster.iaakzin.mongodb.net/elegantStyle
+AUTH_SECRET=E472G00OdALXZIfqj+FVay422LaBAlLX42MPpGG4imI=
+
+PORT=3000
+
+NEXTAUTH_URL=http://localhost:3000
+AUTH_SECRET=GtMt/duSki1Wtpeto0QliBksto5xhg8q1Q8QER6F660=
+
+GITHUB_ID=Ov23lihqUZqAjKs1Azut
+GITHUB_SECRET=779b18833344052fea0a05629cd9021d0827f113
+ 
+

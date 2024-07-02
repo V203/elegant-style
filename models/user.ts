@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-const ShopItemsSchema = new Schema(
+const ShopItemsShcema = new Schema(
     {
         itemName: {
             type: String,
@@ -11,10 +11,10 @@ const ShopItemsSchema = new Schema(
         },
         price: {
             type: Number,
-            required: true,
+            required:true,
         },
         category: {
-            type: String,
+            type:String,
             required: false
         },
 
@@ -24,11 +24,13 @@ const ShopItemsSchema = new Schema(
     }
 );
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     products: [{ type: Schema.Types.ObjectId, ref: 'ShopItems' }],
 });
 
-export let ShopItems = mongoose.models.ShopItems  || mongoose.model('ShopItems', ShopItemsSchema);
-export let User =   mongoose.models.User || mongoose.model('User', UserSchema);
+const ShopItems =  mongoose.models.ShopItems || mongoose.model("ShopItems", ShopItemsShcema);
+const User =  mongoose.models.User || mongoose.model('User', userSchema);
+
+export {  User ,ShopItems};
